@@ -1,14 +1,19 @@
-<div class="container">
-<h1> <%= @cocktail.name %> </h1>
 
+
+
+
+<div class="container text-center m-3">
+<h1> <%= @cocktail.name %> </h1>
+<%= cl_image_tag @cocktail.photo.key, width:200, height:200 %>
+<br>
 <p> <% @cocktail.doses.each do |dd|%>
   <%= dd.description %>
   <%= dd.ingredient.name %>
-  <%= link_to "delete dose", dose_path(dd), method: :destroy , data: {confirm: "Are you sure?"}%>
+
 <% end %>
 </p>
 
-<p>  <%= link_to 'create dose',  new_cocktail_dose_path(@cocktail)%> </p>
+<%= link_to 'create dose',  new_cocktail_dose_path(@cocktail)%>
 
 <p><%= link_to 'Back to all Cocktails', cocktails_path  %> </p>
 </div>
